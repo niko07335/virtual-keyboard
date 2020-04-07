@@ -1,0 +1,33 @@
+.key {
+  width: 40px;
+  height: 32px;
+}
+
+.backspace {
+  width: 120px;
+}
+
+.enter {
+  width: 100px;
+}
+
+.capsLock {
+  width: 100px;
+}
+
+.shiftLeft {
+  width: 120px;
+}
+
+.shiftRight {
+  width: 120px;
+}
+
+.cntrlLeft,.winLeft,.altLeft,.altRight,.cntrlRight{
+  width: 70px
+}
+
+.space {
+  width: 250px;
+}
+
