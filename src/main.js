@@ -6,7 +6,7 @@ function render() {
   <h1 class="title">RSS Виртуальная клавиатура</h1>
     <textarea class="textarea" name="textarea" id="textarea" disabled></textarea>
     <section class="keyboard">
-      <div class="keyboard__row">
+      <div class="keyboard__row-eng">
         <div class="key" data-key="192"><span class='noShift'>\`</span><span class='leftShift noVisible'>~</span></div>
         <div class="key" data-key="49"><span class='noShift'>1</span><span class='leftShift noVisible'>!</span></div>
         <div class="key" data-key="50"><span class='noShift'>2</span><span class='leftShift noVisible'>@</span></div>
@@ -22,7 +22,23 @@ function render() {
         <div class="key" data-key="61"><span class='noShift'>=</span><span class='leftShift noVisible'>+</span></div>
         <div class="key backspace" data-key="8">Backspace</div>
       </div>
-      <div class="keyboard__row">
+      <div class="keyboard__row-ru noVisible">
+      <div class="key" data-key="192"><span class='noShift'>ё</span><span class='leftShift noVisible'>Ё</span></div>
+      <div class="key" data-key="49"><span class='noShift'>1</span><span class='leftShift noVisible'>!</span></div>
+      <div class="key" data-key="50"><span class='noShift'>2</span><span class='leftShift noVisible'>"</span></div>
+      <div class="key" data-key="51"><span class='noShift'>3</span><span class='leftShift noVisible'>№</span></div>
+      <div class="key" data-key="52"><span class='noShift'>4</span><span class='leftShift noVisible'>;</span></div>
+      <div class="key" data-key="53"><span class='noShift'>5</span><span class='leftShift noVisible'>%</span></div>
+      <div class="key" data-key="54"><span class='noShift'>6</span><span class='leftShift noVisible'>:</span></div>
+      <div class="key" data-key="55"><span class='noShift'>7</span><span class='leftShift noVisible'>?</span></div>
+      <div class="key" data-key="56"><span class='noShift'>8</span><span class='leftShift noVisible'>*</span></div>
+      <div class="key" data-key="57"><span class='noShift'>9</span><span class='leftShift noVisible'>(</span></div>
+      <div class="key" data-key="48"><span class='noShift'>0</span><span class='leftShift noVisible'>)</span></div>
+      <div class="key" data-key="173"><span class='noShift'>-</span><span class='leftShift noVisible'>_</span></div>
+      <div class="key" data-key="61"><span class='noShift'>=</span><span class='leftShift noVisible'>+</span></div>
+      <div class="key backspace" data-key="8">Backspace</div>
+    </div>
+      <div class="keyboard__row-eng">
         <div class="key tab" data-key="9">Tab</div>
         <div class="key" data-key="81"><span class='noShift'>q</span><span class='leftShift noVisible'>Q</span></div>
         <div class="key" data-key="87"><span class='noShift'>w</span><span class='leftShift noVisible'>W</span></div>
@@ -38,7 +54,23 @@ function render() {
         <div class="key" data-key="221"><span class='noShift'>]</span><span class='leftShift noVisible'>}</span></div>
         <div class="key" data-key="220"><span class='noShift'>\\</span><span class='leftShift noVisible'>|</span></div>
       </div>
-      <div class="keyboard__row" >
+      <div class="keyboard__row-ru noVisible">
+      <div class="key tab" data-key="9">Tab</div>
+      <div class="key" data-key="81"><span class='noShift'>й</span><span class='leftShift noVisible'>Й</span></div>
+      <div class="key" data-key="87"><span class='noShift'>ц</span><span class='leftShift noVisible'>Ц</span></div>
+      <div class="key" data-key="69"><span class='noShift'>у</span><span class='leftShift noVisible'>У</span></div>
+      <div class="key" data-key="82"><span class='noShift'>к</span><span class='leftShift noVisible'>К</span></div>
+      <div class="key" data-key="84"><span class='noShift'>е</span><span class='leftShift noVisible'>Е</span></div>
+      <div class="key" data-key="89"><span class='noShift'>н</span><span class='leftShift noVisible'>Н</span></div>
+      <div class="key" data-key="85"><span class='noShift'>г</span><span class='leftShift noVisible'>Г</span></div>
+      <div class="key" data-key="73"><span class='noShift'>ш</span><span class='leftShift noVisible'>Ш</span></div>
+      <div class="key" data-key="79"><span class='noShift'>щ</span><span class='leftShift noVisible'>Щ</span></div>
+      <div class="key" data-key="80"><span class='noShift'>з</span><span class='leftShift noVisible'>З</span></div>
+      <div class="key" data-key="219"><span class='noShift'>х</span><span class='leftShift noVisible'>Х</span></div>
+      <div class="key" data-key="221"><span class='noShift'>ъ</span><span class='leftShift noVisible'>Ъ</span></div>
+      <div class="key" data-key="220"><span class='noShift'>\\</span><span class='leftShift noVisible'>/</span></div>
+    </div>
+      <div class="keyboard__row-eng" >
         <div class="key capsLock" data-key="20" data-caps="0">Caps Lock</div>
         <div class="key" data-key="65"><span class='noShift'>a</span><span class='leftShift noVisible'>A</span></div>
         <div class="key" data-key="83"><span class='noShift'>s</span><span class='leftShift noVisible'>S</span></div>
@@ -52,9 +84,23 @@ function render() {
         <div class="key" data-key="59"><span class='noShift'>;</span><span class='leftShift noVisible'>:</span></div>
         <div class="key" data-key="222"><span class='noShift'>'</span><span class='leftShift noVisible'>"</span></div>
         <div class="key enter" data-key="13">Enter</div>
-
       </div>
-      <div class="keyboard__row" >
+      <div class="keyboard__row-ru noVisible" >
+      <div class="key capsLock" data-key="20" data-caps="0">Caps Lock</div>
+      <div class="key" data-key="65"><span class='noShift'>ф</span><span class='leftShift noVisible'>Ф</span></div>
+      <div class="key" data-key="83"><span class='noShift'>ы</span><span class='leftShift noVisible'>Ы</span></div>
+      <div class="key" data-key="68"><span class='noShift'>в</span><span class='leftShift noVisible'>В</span></div>
+      <div class="key" data-key="70"><span class='noShift'>а</span><span class='leftShift noVisible'>А</span></div>
+      <div class="key" data-key="71"><span class='noShift'>п</span><span class='leftShift noVisible'>П</span></div>
+      <div class="key" data-key="72"><span class='noShift'>р</span><span class='leftShift noVisible'>Р</span></div>
+      <div class="key" data-key="74"><span class='noShift'>о</span><span class='leftShift noVisible'>О</span></div>
+      <div class="key" data-key="75"><span class='noShift'>л</span><span class='leftShift noVisible'>Л</span></div>
+      <div class="key" data-key="76"><span class='noShift'>д</span><span class='leftShift noVisible'>Д</span></div>
+      <div class="key" data-key="59"><span class='noShift'>ж</span><span class='leftShift noVisible'>Ж</span></div>
+      <div class="key" data-key="222"><span class='noShift'>э</span><span class='leftShift noVisible'>Э</span></div>
+      <div class="key enter" data-key="13">Enter</div>
+    </div>
+      <div class="keyboard__row-eng" >
         <div class="key shiftLeft" data-key="16">Shift</div>
         <div class="key" data-key="90"><span class='noShift'>z</span><span class='leftShift noVisible'>Z</span></div>
         <div class="key" data-key="88"><span class='noShift'>x</span><span class='leftShift noVisible'>X</span></div>
@@ -69,7 +115,22 @@ function render() {
         <div class="key" data-key="38">▲</div>
         <div class="key shiftRight" data-key="16">Shift</div>
       </div>
-      <div class="keyboard__row" >
+      <div class="keyboard__row-ru noVisible" >
+      <div class="key shiftLeft" data-key="16">Shift</div>
+      <div class="key" data-key="90"><span class='noShift'>я</span><span class='leftShift noVisible'>Я</span></div>
+      <div class="key" data-key="88"><span class='noShift'>ч</span><span class='leftShift noVisible'>Ч</span></div>
+      <div class="key" data-key="67"><span class='noShift'>с</span><span class='leftShift noVisible'>С</span></div>
+      <div class="key" data-key="86"><span class='noShift'>м</span><span class='leftShift noVisible'>М</span></div>
+      <div class="key" data-key="66"><span class='noShift'>и</span><span class='leftShift noVisible'>И</span></div>
+      <div class="key" data-key="78"><span class='noShift'>т</span><span class='leftShift noVisible'>Т</span></div>
+      <div class="key" data-key="77"><span class='noShift'>ь</span><span class='leftShift noVisible'>Ь</span></div>
+      <div class="key" data-key="188"><span class='noShift'>б</span><span class='leftShift noVisible'>Б</span></div>
+      <div class="key" data-key="190"><span class='noShift'>ю</span><span class='leftShift noVisible'>Ю</span></div>
+      <div class="key" data-key="191"><span class='noShift'>.</span><span class='leftShift noVisible'>,</span></div>
+      <div class="key" data-key="38">▲</div>
+      <div class="key shiftRight" data-key="16">Shift</div>
+    </div>
+      <div class="keyboard__row">
         <div class="key cntrlLeft" data-key="17">Ctrl</div>
         <div class="key winLeft" data-key="91">Windows</div>
         <div class="key altLeft" data-key="18">Alt</div>
@@ -85,7 +146,6 @@ function render() {
   `
   addKeyEvents()
 }
-
 
 function getTextarea() {
   return document.querySelector('textarea');
@@ -104,9 +164,8 @@ function mouseClick() {
 }
 
 function keyDown() {
-  if (event.code === 'ShiftLeft') shiftLeft();
-  else if (event.code === 'ShiftLeft') shiftLeft();
-  else if (event.code === 'CapsLock') CapsLock();
+  const shift = document.querySelector('div.shiftLeft');
+  if (event.code === 'ShiftLeft' && !shift.classList.contains('active--key')) shiftLeft();
   else if (event.code === 'CapsLock') CapsLock();
 
   const textarea = getTextarea();
@@ -117,8 +176,16 @@ function keyDown() {
 
 function keyUp() {
   const key = document.querySelector(`[data-key="${event.which}"]`);
+  const alt = document.querySelector('div.altLeft');
   key.classList.remove('active--key');
-  if (event.code === 'ShiftLeft') shiftLeft(false);
+  if (event.code === 'ShiftLeft' && alt.classList.contains('active--key')) shiftLeft();
+}
+
+function changeLang() {
+  const ru = document.querySelectorAll('div.keyboard__row-ru')
+  const eng = document.querySelectorAll('div.keyboard__row-eng')
+  ru.forEach(e => { e.classList.toggle('noVisible') });
+  eng.forEach(e => { e.classList.toggle('noVisible') });
 }
 
 function shiftLeft() {
@@ -126,12 +193,11 @@ function shiftLeft() {
   const leftShift = document.querySelectorAll('span.leftShift');
   noShift.forEach(e => { e.classList.toggle('noVisible') });
   leftShift.forEach(e => { e.classList.toggle('noVisible') });
+  const alt = document.querySelector('div.altLeft');
+  // if (alt.classList.contains('active--key')) changeLang();
 };
 
-function CapsLock(is) {
-  console.log(is);
-  if (is) document.querySelector('div.capsLock').setAttribute('data-caps', '0');
-  else document.querySelector('div.capsLock').setAttribute('data-caps', '1');
+function CapsLock() {
   const noShift = document.querySelectorAll('span.noShift');
   const leftShift = document.querySelectorAll('span.leftShift');
 

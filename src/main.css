@@ -31,7 +31,7 @@ main {
   padding: 10px 5px;
 }
 
-.keyboard__row {
+.keyboard__row-eng, .keyboard__row-ru, .keyboard__row {
   width: 100%;
   display: flex;
   justify-content: space-around;
