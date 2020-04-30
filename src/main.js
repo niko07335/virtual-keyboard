@@ -65,8 +65,7 @@ function keyUp() {
   const alt = document.querySelector('div.altLeft');
   const shift = document.querySelector('div.shiftLeft');
   key.classList.remove('active--key');
-  if (event.code === 'ShiftLeft' && !shift.classList.contains('active--key') && !alt.classList.contains('active--key')){ 
-
+  if (event.code === 'ShiftLeft' && !shift.classList.contains('active--key') && !alt.classList.contains('active--key')) {
     shiftLeft();
     isTrueShift = true;
   }
