@@ -1,6 +1,7 @@
 let currLang = 'eng';
 let isCapsOn = false;
 let isTrueShift = true;
+
 function Backspace() {
   const textarea = getTextarea();
   textarea.value = textarea.value.substring(0, textarea.value.length - 1)
@@ -35,8 +36,8 @@ function keyDown() {
   const alt = document.querySelector('div.altLeft');
   const textarea = getTextarea();
   let key = document.querySelector(`[data-key="${event.which}"]`);
-  if (currLang === 'eng' && event.key.length === 1) key = document.querySelectorAll(`[data-key="${event.which}"]`)[0];
-  else if (currLang === 'ru' && event.key.length === 1) key = document.querySelectorAll(`[data-key="${event.which}"]`)[1];
+  if (currLang === 'eng' && event.key.length === 1 || event.location === 1) key = document.querySelectorAll(`[data-key="${event.which}"]`)[0];
+  else if (currLang === 'ru' && event.key.length === 1 || event.location === 2) key = document.querySelectorAll(`[data-key="${event.which}"]`)[1];
   key.classList.add('active--key');
   if (event.code === 'ShiftLeft' && alt.classList.contains('active--key')) changeLang();
   else if (event.code === 'ShiftLeft') shiftLeft();
@@ -50,9 +51,8 @@ function keyDown() {
       let keyValue;
       if (shift.classList.contains('active--key') && !isCapsOn) keyValue = key.querySelector('span.leftShift').innerHTML.toUpperCase();
       else if (!shift.classList.contains('active--key') && isCapsOn) keyValue = key.querySelector('span.noShift').innerHTML.toUpperCase();
-      else if (shift.classList.contains('active--key') && isCapsOn)keyValue = key.querySelector('span.leftShift').innerHTML.toLowerCase();
+      else if (shift.classList.contains('active--key') && isCapsOn) keyValue = key.querySelector('span.leftShift').innerHTML.toLowerCase();
       else keyValue = key.querySelector('span.noShift').innerHTML.toLowerCase();
-      console.log(keyValue.toUpperCase());
       textarea.value += keyValue;
     }
   }
@@ -60,13 +60,16 @@ function keyDown() {
 
 function keyUp() {
   let key = document.querySelector(`[data-key="${event.which}"]`);
-  if (currLang === 'eng' && event.key.length === 1) key = document.querySelectorAll(`[data-key="${event.which}"]`)[0];
-  else if (currLang === 'ru' && event.key.length === 1) key = document.querySelectorAll(`[data-key="${event.which}"]`)[1];
+  if (currLang === 'eng' && event.key.length === 1 || event.location === 1) key = document.querySelectorAll(`[data-key="${event.which}"]`)[0];
+  else if (currLang === 'ru' && event.key.length === 1 || event.location === 2) key = document.querySelectorAll(`[data-key="${event.which}"]`)[1];
   const alt = document.querySelector('div.altLeft');
   const shift = document.querySelector('div.shiftLeft');
   key.classList.remove('active--key');
-  if (event.code === 'ShiftLeft' && !shift.classList.contains('active--key') && !alt.classList.contains('active--key')) shiftLeft();
+  if (event.code === 'ShiftLeft' && !shift.classList.contains('active--key') && !alt.classList.contains('active--key')){ 
 
+    shiftLeft();
+    isTrueShift = true;
+  }
 }
 
 function addKeyEvents() {
@@ -230,7 +233,7 @@ function getTextarea() {
 }
 
 function mouseClick() {
-  console.log('mouse');
+  console.log(`mouse ${event.target.innerHTML}`);
 }
 
 function changeLang() {
@@ -242,11 +245,12 @@ function changeLang() {
     engKeys.forEach(e => { e.classList.toggle('noVisible') });
     if (currLang === 'eng') currLang = 'ru';
     else currLang = 'eng';
-  } 
+    isTrueShift = false
+  }
 }
 
 function shiftLeft() {
-  if (!event.repeat) {
+  if (!event.repeat && isTrueShift) {
     const noShift = document.querySelectorAll('span.noShift');
     const leftShift = document.querySelectorAll('span.leftShift');
     noShift.forEach(e => { e.classList.toggle('noVisible') });
