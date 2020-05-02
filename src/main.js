@@ -31,23 +31,37 @@ function CapsLock() {
   else isCapsOn = false
 }
 
-function keyDown() {
-  const shift = document.querySelector('div.shiftLeft');
-  const alt = document.querySelector('div.altLeft');
+function keyDown(...args) {
+  let which;
+  let code;
+  let location;
+  if (args[1] !== undefined) {
+    which = Number(args[0]);
+    code = args[1];
+    location = args[2];
+  }
+  else{
+    which = event.which;
+    code = event.code;
+    location = event.location;
+  }
+
+  const shift = document.querySelector('div.ShiftLeft');
+  const alt = document.querySelector('div.AltLeft');
   const textarea = getTextarea();
-  let key = document.querySelector(`[data-key="${event.which}"]`);
-  if (currLang === 'eng' && event.key.length === 1 || event.location === 1) key = document.querySelectorAll(`[data-key="${event.which}"]`)[0];
-  else if (currLang === 'ru' && event.key.length === 1 || event.location === 2) key = document.querySelectorAll(`[data-key="${event.which}"]`)[1];
+  let key = document.querySelector(`[data-key="${which}"]`);
+  if (currLang === 'eng' && code.length === 1 || location === 1) key = document.querySelectorAll(`[data-key="${which}"]`)[0];
+  else if (currLang === 'ru' && code.length === 1 || location === 2) key = document.querySelectorAll(`[data-key="${which}"]`)[1];
   key.classList.add('active--key');
-  if (event.code === 'ShiftLeft' && alt.classList.contains('active--key')) changeLang();
-  else if (event.code === 'ShiftLeft') shiftLeft();
-  else if (event.code === 'CapsLock') CapsLock();
-  else if (event.code === 'Backspace') Backspace();
-  else if (event.code === 'Space') Space();
-  else if (event.code === 'Enter') Enter();
-  else if (event.code === 'Tab') Tab();
+  if (code === 'ShiftLeft' && alt.classList.contains('active--key')) changeLang();
+  else if (code === 'ShiftLeft') shiftLeft();
+  else if (code === 'CapsLock') CapsLock();
+  else if (code === 'Backspace') Backspace();
+  else if (code === 'Space') Space();
+  else if (code === 'Enter') Enter();
+  else if (code === 'Tab') Tab();
   else {
-    if (event.key.length === 1) {
+    if (code.length === 1) {
       let keyValue;
       if (shift.classList.contains('active--key') && !isCapsOn) keyValue = key.querySelector('span.leftShift').innerHTML.toUpperCase();
       else if (!shift.classList.contains('active--key') && isCapsOn) keyValue = key.querySelector('span.noShift').innerHTML.toUpperCase();
@@ -58,14 +72,27 @@ function keyDown() {
   }
 }
 
-function keyUp() {
-  let key = document.querySelector(`[data-key="${event.which}"]`);
-  if (currLang === 'eng' && event.key.length === 1 || event.location === 1) key = document.querySelectorAll(`[data-key="${event.which}"]`)[0];
-  else if (currLang === 'ru' && event.key.length === 1 || event.location === 2) key = document.querySelectorAll(`[data-key="${event.which}"]`)[1];
-  const alt = document.querySelector('div.altLeft');
-  const shift = document.querySelector('div.shiftLeft');
+function keyUp(...args) {
+  let which;
+  let code;
+  let location;
+  if (args[1] !== undefined) {
+    which = Number(args[0]);
+    code = args[1];
+    location = args[2];
+  }
+  else {
+    which = event.which;
+    code = event.code;
+    location = event.location;
+  }
+  let key = document.querySelector(`[data-key="${which}"]`);
+  if (currLang === 'eng' && code.length === 1 || location === 1) key = document.querySelectorAll(`[data-key="${which}"]`)[0];
+  else if (currLang === 'ru' && code.length === 1 || location === 2) key = document.querySelectorAll(`[data-key="${which}"]`)[1];
+  const alt = document.querySelector('div.AltLeft');
+  const shift = document.querySelector('div.ShiftLeft');
   key.classList.remove('active--key');
-  if (event.code === 'ShiftLeft' && !shift.classList.contains('active--key') && !alt.classList.contains('active--key')) {
+  if (code === 'ShiftLeft' && !shift.classList.contains('active--key') && !alt.classList.contains('active--key')) {
     shiftLeft();
     isTrueShift = true;
   }
@@ -99,7 +126,7 @@ function render() {
         <div class="key" data-key="48"><span class='noShift noCaps'>0</span><span class='leftShift noVisible noCaps'>)</span></div>
         <div class="key" data-key="173"><span class='noShift noCaps'>-</span><span class='leftShift noVisible noCaps'>_</span></div>
         <div class="key" data-key="61"><span class='noShift noCaps'>=</span><span class='leftShift noVisible noCaps'>+</span></div>
-        <div class="key backspace" data-key="8">Backspace</div>
+        <div class="key Backspace" data-key="8">Backspace</div>
       </div>
       <div class="keyboard__row-ru noVisible">
       <div class="key" data-key="192"><span class='noShift'>ё</span><span class='leftShift noVisible'>Ё</span></div>
@@ -115,10 +142,10 @@ function render() {
       <div class="key" data-key="48"><span class='noShift noCaps'>0</span><span class='leftShift noVisible noCaps'>)</span></div>
       <div class="key" data-key="189"><span class='noShift noCaps'>-</span><span class='leftShift noVisible noCaps'>_</span></div>
       <div class="key" data-key="187"><span class='noShift noCaps'>=</span><span class='leftShift noVisible noCaps'>+</span></div>
-      <div class="key backspace" data-key="8">Backspace</div>
+      <div class="key Backspace" data-key="8">Backspace</div>
     </div>
       <div class="keyboard__row-eng">
-        <div class="key tab" data-key="9">Tab</div>
+        <div class="key Tab" data-key="9">Tab</div>
         <div class="key" data-key="81"><span class='noShift'>q</span><span class='leftShift noVisible'>Q</span></div>
         <div class="key" data-key="87"><span class='noShift'>w</span><span class='leftShift noVisible'>W</span></div>
         <div class="key" data-key="69"><span class='noShift'>e</span><span class='leftShift noVisible'>E</span></div>
@@ -134,7 +161,7 @@ function render() {
         <div class="key" data-key="220"><span class='noShift noCaps'>\\</span><span class='leftShift noVisible noCaps'>|</span></div>
       </div>
       <div class="keyboard__row-ru noVisible">
-      <div class="key tab" data-key="9">Tab</div>
+      <div class="key Tab" data-key="9">Tab</div>
       <div class="key" data-key="81"><span class='noShift'>й</span><span class='leftShift noVisible'>Й</span></div>
       <div class="key" data-key="87"><span class='noShift'>ц</span><span class='leftShift noVisible'>Ц</span></div>
       <div class="key" data-key="69"><span class='noShift'>у</span><span class='leftShift noVisible'>У</span></div>
@@ -150,7 +177,7 @@ function render() {
       <div class="key" data-key="220"><span class='noShift noCaps'>\\</span><span class='leftShift noVisible noCaps'>/</span></div>
     </div>
       <div class="keyboard__row-eng" >
-        <div class="key capsLock" data-key="20" data-caps="0">Caps Lock</div>
+        <div class="key CapsLock" data-key="20" data-caps="0">Caps Lock</div>
         <div class="key" data-key="65"><span class='noShift'>a</span><span class='leftShift noVisible'>A</span></div>
         <div class="key" data-key="83"><span class='noShift'>s</span><span class='leftShift noVisible'>S</span></div>
         <div class="key" data-key="68"><span class='noShift'>d</span><span class='leftShift noVisible'>D</span></div>
@@ -162,10 +189,10 @@ function render() {
         <div class="key" data-key="76"><span class='noShift'>l</span><span class='leftShift noVisible'>L</span></div>
         <div class="key" data-key="59"><span class='noShift noCaps'>;</span><span class='leftShift noVisible noCaps'>:</span></div>
         <div class="key" data-key="222"><span class='noShift noCaps'>'</span><span class='leftShift noVisible noCaps'>"</span></div>
-        <div class="key enter" data-key="13">Enter</div>
+        <div class="key Enter" data-key="13">Enter</div>
       </div>
       <div class="keyboard__row-ru noVisible" >
-      <div class="key capsLock" data-key="20" data-caps="0">Caps Lock</div>
+      <div class="key CapsLock" data-key="20" data-caps="0">Caps Lock</div>
       <div class="key" data-key="65"><span class='noShift'>ф</span><span class='leftShift noVisible'>Ф</span></div>
       <div class="key" data-key="83"><span class='noShift'>ы</span><span class='leftShift noVisible'>Ы</span></div>
       <div class="key" data-key="68"><span class='noShift'>в</span><span class='leftShift noVisible'>В</span></div>
@@ -177,10 +204,10 @@ function render() {
       <div class="key" data-key="76"><span class='noShift'>д</span><span class='leftShift noVisible'>Д</span></div>
       <div class="key" data-key="59"><span class='noShift'>ж</span><span class='leftShift noVisible'>Ж</span></div>
       <div class="key" data-key="222"><span class='noShift'>э</span><span class='leftShift noVisible'>Э</span></div>
-      <div class="key enter" data-key="13">Enter</div>
+      <div class="key Enter" data-key="13">Enter</div>
     </div>
       <div class="keyboard__row-eng" >
-        <div class="key shiftLeft" data-key="16">Shift</div>
+        <div class="key ShiftLeft" data-key="16">Shift</div>
         <div class="key" data-key="90"><span class='noShift'>z</span><span class='leftShift noVisible'>Z</span></div>
         <div class="key" data-key="88"><span class='noShift'>x</span><span class='leftShift noVisible'>X</span></div>
         <div class="key" data-key="67"><span class='noShift'>c</span><span class='leftShift noVisible'>C</span></div>
@@ -192,10 +219,10 @@ function render() {
         <div class="key" data-key="190"><span class='noShift noCaps'>.</span><span class='leftShift noVisible noCaps'>\></span></div>
         <div class="key" data-key="191"><span class='noShift noCaps'>\/</span><span class='leftShift noVisible noCaps'>?</span></div>
         <div class="key" data-key="38">▲</div>
-        <div class="key shiftRight" data-key="16">Shift</div>
+        <div class="key ShiftRight" data-key="16">Shift</div>
       </div>
       <div class="keyboard__row-ru noVisible" >
-      <div class="key shiftLeft" data-key="16">Shift</div>
+      <div class="key ShiftLeft" data-key="16">Shift</div>
       <div class="key" data-key="90"><span class='noShift'>я</span><span class='leftShift noVisible'>Я</span></div>
       <div class="key" data-key="88"><span class='noShift'>ч</span><span class='leftShift noVisible'>Ч</span></div>
       <div class="key" data-key="67"><span class='noShift'>с</span><span class='leftShift noVisible'>С</span></div>
@@ -207,18 +234,18 @@ function render() {
       <div class="key" data-key="190"><span class='noShift'>ю</span><span class='leftShift noVisible'>Ю</span></div>
       <div class="key" data-key="191"><span class='noShift noCaps'>.</span><span class='leftShift noVisible noCaps'>,</span></div>
       <div class="key" data-key="38">▲</div>
-      <div class="key shiftRight" data-key="16">Shift</div>
+      <div class="key ShiftRight" data-key="16">Shift</div>
     </div>
       <div class="keyboard__row">
-        <div class="key cntrlLeft" data-key="17">Ctrl</div>
-        <div class="key winLeft" data-key="91">Windows</div>
-        <div class="key altLeft" data-key="18">Alt</div>
-        <div class="key space" data-key="32">Space</div>
-        <div class="key altRight" data-key="18">Alt</div>
-        <div class="key leftarrow" data-key="37">◄</div>
+        <div class="key CntrlLeft" data-key="17">Ctrl</div>
+        <div class="key WinLeft" data-key="91">Windows</div>
+        <div class="key AltLeft" data-key="18">Alt</div>
+        <div class="key Space" data-key="32">Space</div>
+        <div class="key AltRight" data-key="18">Alt</div>
+        <div class="key leftArrow" data-key="37">◄</div>
         <div class="key downArrow" data-key="40">▼</div>
         <div class="key rightArrow" data-key="39">►</div>
-        <div class="key cntrlRight" data-key="17">Ctrl</div>
+        <div class="key CntrlRight" data-key="17">Ctrl</div>
       </div>
     </section>
     <p class="description">переключение языка левые Shift + Alt</p>
@@ -232,7 +259,25 @@ function getTextarea() {
 }
 
 function mouseClick() {
-  console.log(`mouse ${event.target.innerHTML}`);
+  let key = event.target;
+  let value = event.target.firstChild.innerHTML;
+  let location = 0;
+  if (event.target.nodeName === "SPAN") {
+    value = event.target.innerHTML
+    key = event.target.parentElement;
+  }
+  else if (event.target.firstElementChild === null) {
+    value = event.target.innerHTML;
+    location = 1;
+  }
+  if (key.classList[1]) value = key.classList[1]
+  const attr = key.getAttribute('data-key');
+  if (value == 'ShiftRight' || value == 'AltRight' || value == 'CntrlRight') location = 2;
+
+  console.log(attr, value, location);
+  keyDown(attr, value, location);
+  // keyUp(attr, value, location);
+  setTimeout(keyUp, 10, attr, value, location)
 }
 
 function changeLang() {
