@@ -3,34 +3,38 @@
   height: 32px;
 }
 
-.backspace {
+.Backspace {
   width: 120px;
 }
 
-.enter {
+.Tab {
+  width: 110px;
+}
+
+.Enter {
   width: 100px;
 }
 
-.capsLock {
+.CapsLock {
   width: 100px;
 }
 
-.shiftLeft {
-  width: 120px;
+.ShiftLeft {
+  width: 115px;
 }
 
-.shiftRight {
-  width: 120px;
+.ShiftRight {
+  width: 115px;
 }
 
-.cntrlLeft,.winLeft,.altLeft,.altRight,.cntrlRight{
+.CntrlLeft, .WinLeft, .AltLeft, .AltRight, .CntrlRight {
   width: 70px
 }
 
-.space {
+.Space {
   width: 250px;
 }
 
-.noVisible{
+.noVisible {
   display: none;
 }
