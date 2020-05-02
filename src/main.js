@@ -40,16 +40,16 @@ function keyDown(...args) {
     code = args[1];
     location = args[2];
   }
-  else{
+  else {
     which = event.which;
-    code = event.code;
+    code = event.key;
     location = event.location;
   }
-
   const shift = document.querySelector('div.ShiftLeft');
   const alt = document.querySelector('div.AltLeft');
   const textarea = getTextarea();
   let key = document.querySelector(`[data-key="${which}"]`);
+  if (key == null) return;
   if (currLang === 'eng' && code.length === 1 || location === 1) key = document.querySelectorAll(`[data-key="${which}"]`)[0];
   else if (currLang === 'ru' && code.length === 1 || location === 2) key = document.querySelectorAll(`[data-key="${which}"]`)[1];
   key.classList.add('active--key');
@@ -83,10 +83,11 @@ function keyUp(...args) {
   }
   else {
     which = event.which;
-    code = event.code;
+    code = event.key;
     location = event.location;
   }
   let key = document.querySelector(`[data-key="${which}"]`);
+  if (key == null) return;
   if (currLang === 'eng' && code.length === 1 || location === 1) key = document.querySelectorAll(`[data-key="${which}"]`)[0];
   else if (currLang === 'ru' && code.length === 1 || location === 2) key = document.querySelectorAll(`[data-key="${which}"]`)[1];
   const alt = document.querySelector('div.AltLeft');
@@ -273,10 +274,7 @@ function mouseClick() {
   if (key.classList[1]) value = key.classList[1]
   const attr = key.getAttribute('data-key');
   if (value == 'ShiftRight' || value == 'AltRight' || value == 'CntrlRight') location = 2;
-
-  console.log(attr, value, location);
   keyDown(attr, value, location);
-  // keyUp(attr, value, location);
   setTimeout(keyUp, 10, attr, value, location)
 }
 
